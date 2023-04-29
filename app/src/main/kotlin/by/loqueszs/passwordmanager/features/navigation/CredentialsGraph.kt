@@ -59,6 +59,9 @@ private object CredentialsListDestinations {
                     initialState.destination.route?.contains(Destinations.CredentialsDetailScreen.route) == true -> {
                         slideIntoContainer(AnimatedContentScope.SlideDirection.Right)
                     }
+                    initialState.destination.route == Destinations.ProfileSettingsScreen.route -> {
+                        slideIntoContainer(AnimatedContentScope.SlideDirection.Up)
+                    }
                     else -> null
                 }
             },
@@ -69,6 +72,9 @@ private object CredentialsListDestinations {
                     }
                     targetState.destination.route?.contains(Destinations.CredentialsDetailScreen.route) == true -> {
                         slideOutOfContainer(AnimatedContentScope.SlideDirection.Left)
+                    }
+                    targetState.destination.route == Destinations.ProfileSettingsScreen.route -> {
+                        slideOutOfContainer(AnimatedContentScope.SlideDirection.Down)
                     }
                     else -> null
                 }

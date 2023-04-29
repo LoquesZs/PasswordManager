@@ -2,6 +2,8 @@ package by.loqueszs.passwordmanager.features.navigation
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import by.loqueszs.passwordmanager.features.navigation.ProfileListDestinations.authScreen
@@ -66,7 +68,27 @@ private object ProfileListDestinations {
     @OptIn(ExperimentalAnimationApi::class)
     fun NavGraphBuilder.profileSettingsScreen() {
         composable(
-            route = Destinations.ProfileSettingsScreen.route
+            route = Destinations.ProfileSettingsScreen.route,
+            enterTransition = {
+                when {
+                    initialState.destination.route == Destinations.CredentialsListScreen.route -> {
+                        slideIntoContainer(AnimatedContentScope.SlideDirection.Down)
+                    }
+                    else -> {
+                        fadeIn()
+                    }
+                }
+            },
+            exitTransition = {
+                when {
+                    targetState.destination.route == Destinations.CredentialsListScreen.route -> {
+                        slideOutOfContainer(AnimatedContentScope.SlideDirection.Up)
+                    }
+                    else -> {
+                        fadeOut()
+                    }
+                }
+            }
         ) {
             ProfileScreen()
         }
