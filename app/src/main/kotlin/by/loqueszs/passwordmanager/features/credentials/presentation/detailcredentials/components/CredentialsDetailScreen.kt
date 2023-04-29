@@ -3,11 +3,10 @@ package by.loqueszs.passwordmanager.features.credentials.presentation.detailcred
 import android.content.Intent
 import android.net.Uri
 import android.util.Patterns
-import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -67,7 +67,6 @@ sealed class CredentialsType {
 private const val LABEL_LOGIN = "label_login"
 private const val LABEL_PASSWORD = "label_password"
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CredentialsDetailScreen(
     id: Long,
@@ -107,7 +106,7 @@ fun CredentialsDetailScreen(
             }
         }
     }.onFailure {
-        Toast.makeText(context, "not confirmed", Toast.LENGTH_SHORT).show()
+        // Do nothing
     }
 
     Box(
@@ -166,17 +165,24 @@ fun CredentialsDetailScreen(
         ) {
             Snackbar(snackbarData = it)
         }
-        Button(
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter),
-            onClick = {
-                composableScope.launch {
-                    viewModel.saveChanges()
-                }
-            }
+                .align(Alignment.BottomCenter)
+                .background(color = MaterialTheme.colorScheme.background)
         ) {
-            Text(text = stringResource(id = R.string.save))
+            Divider()
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(defaultPadding),
+                onClick = {
+                    composableScope.launch {
+                        viewModel.saveChanges()
+                    }
+                }
+            ) {
+                Text(text = stringResource(id = R.string.save))
+            }
         }
     }
 }
@@ -216,7 +222,7 @@ fun DetailItem(
                 start = defaultPadding * 2,
                 end = defaultPadding * 2,
                 top = defaultPadding * 2,
-                bottom = defaultPadding * 4
+                bottom = defaultPadding * 10
             ),
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(defaultPadding)
