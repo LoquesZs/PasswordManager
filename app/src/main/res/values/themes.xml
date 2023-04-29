@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.PassManager" parent="android:Theme.Material.Light.NoActionBar">
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
+<!--        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>-->
+<!--        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>-->
+    </style>
+
+    <style name="Theme.PassManager.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+<!--        <item name="windowSplashScreenAnimatedIcon"></item>-->
+<!--        <item name="windowSplashScreenAnimationDuration">200</item>-->
+        <item name="postSplashScreenTheme">@style/Theme.PassManager</item>
+    </style>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Менеджер паролей</string>
+    <string name="login_title">"Логин: "</string>
+    <string name="password_title">"Пароль: "</string>
+    <string name="login_label">Логин</string>
+    <string name="password_label">Пароль</string>
+    <string name="input_password_title">Введите пароль</string>
+    <string name="input_login_title">Введите логин</string>
+    <string name="title_label">Название</string>
+    <string name="input_title_label">Придумайте название</string>
+    <string name="url_title">Адрес сайта (опционально)</string>
+    <string name="url_label">Адрес сайта</string>
+    <string name="note_title">Примечание (опционально)</string>
+    <string name="note_label">Примечание</string>
+    <string name="title_already_exists_error_message">Данные с таким названием уже существуют</string>
+    <string name="generate_password">Сгенерировать пароль</string>
+    <string name="save">Сохранить</string>
+    <string name="create">Создать</string>
+    <string name="empty_credentials_list">Похоже вы ещё ничего не добавили. Давайте это исправим :)</string>
+    <string name="delete_credentials">Удалить данные?</string>
+    <string name="loading">Загрузка…</string>
+    <string name="invalid_url_action_label">Понял</string>
+    <string name="invalid_url_message">Кажется ссылка недействительна</string>
+    <string name="url_prefix">https://</string>
+    <string name="biometric_fingerprint_title">Менеджер Паролей</string>
+    <string name="biometric_fingerprint_subtitle">Подтвердите отпечаток пальца</string>
+    <string name="biometric_cancel_button_text">Отмена</string>
+</resources>

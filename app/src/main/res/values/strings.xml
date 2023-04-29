@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Password Manager</string>
+    <string name="login_title">"Login: "</string>
+    <string name="password_title">"Password: "</string>
+    <string name="login_label">Login</string>
+    <string name="password_label">Password</string>
+    <string name="input_password_title">Input password</string>
+    <string name="input_login_title">Input login</string>
+    <string name="title_label">Title</string>
+    <string name="input_title_label">Create title</string>
+    <string name="url_title">URL (optionally)</string>
+    <string name="url_label">URL</string>
+    <string name="note_title">Note (optionally)</string>
+    <string name="note_label">Note</string>
+    <string name="title_already_exists_error_message">TITLE ALREADY EXISTS</string>
+    <string name="generate_password">Generate password</string>
+    <string name="save">Save</string>
+    <string name="create">Create</string>
+    <string name="empty_credentials_list">Seems like cache is empty. Just add credentials</string>
+    <string name="delete_credentials">Delete credentials?</string>
+    <string name="loading">Loading…</string>
+    <string name="invalid_url_action_label">OK</string>
+    <string name="invalid_url_message">Seems like URL is invalid</string>
+    <string name="url_prefix" translatable="false">https://</string>
+    <string name="biometric_fingerprint_title">Password Manager</string>
+    <string name="biometric_fingerprint_subtitle">Confirm your fingerprint</string>
+    <string name="biometric_cancel_button_text">Cancel</string>
+</resources>
