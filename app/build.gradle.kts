@@ -1,13 +1,12 @@
-
-
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
-    id("com.google.devtools.ksp")
-    id("com.google.dagger.hilt.android")
-    id("org.jetbrains.kotlin.plugin.serialization")
-    id("by.loqueszs.bundle_release_files")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.serialization)
+    // id("by.loqueszs.bundle_release_files")
 }
 
 android {
@@ -30,7 +29,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -67,10 +69,10 @@ android {
         arg("room.schemaLocation", "$projectDir/schemas")
     }
 
-    bundleReleaseFiles {
-        appVersion.set("1")
-        outputDirectory.set(File(".", "build/outputs"))
-    }
+//    bundleReleaseFiles {
+//        appVersion.set("1")
+//        outputDirectory.set(File(".", "build/outputs"))
+//    }
 }
 
 dependencies {
@@ -78,92 +80,91 @@ dependencies {
     // -----Data-----
 
     // SQLite
-    implementation("androidx.sqlite:sqlite-ktx:2.3.1")
+    implementation(libs.sqlite)
 
     // SQLCipher
-    implementation("net.zetetic:android-database-sqlcipher:4.5.3")
+    implementation(libs.sqlcipher)
 
     // Room
-    implementation("androidx.room:room-runtime:2.5.1")
-    implementation("androidx.room:room-ktx:2.5.1")
-    ksp("androidx.room:room-compiler:2.5.1")
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 
     // DataStore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    implementation(libs.datastore.preferences)
+    implementation(libs.datastore.preferences.core)
 
     // -----DI-----
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     // Hilt navigation
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.hilt.navigation.compose)
 
     // -----Core-----
 
     // Compose for activity
-    implementation("androidx.activity:activity-compose:1.7.1")
+    implementation(libs.activity.compose)
 
     // Kotlin
 
-    implementation("androidx.core:core-ktx:1.10.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation(libs.core.ktx)
+    implementation(libs.kotlinx.serialization.json)
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel.compose)
 
     // -----Compose-----
 
-    implementation(platform("androidx.compose:compose-bom:2023.04.00"))
-    implementation("androidx.compose.ui:ui:1.4.2")
-    implementation("androidx.compose.ui:ui-graphics:1.4.2")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.2")
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
 
     // Material3
-    implementation("androidx.compose.material3:material3:1.1.0-rc01")
-//    implementation("androidx.compose.material3:material3-window-size-class:1.0.1")
-    implementation("androidx.compose.material:material-icons-extended:1.4.2")
-    implementation("androidx.compose.material:material:1.4.2")
+    implementation(libs.material3)
+    implementation(libs.material)
+    implementation(libs.material.icons.extended)
 
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation(libs.navigation.compose)
 
     // -----Accompanist-----
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.0")
+    implementation(libs.accompanist.systemuicontroller)
 
     // Accompanist navigation
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.30.0")
+    implementation(libs.accompanist.navigation.animation)
 
     // Biometric
-    implementation("androidx.biometric:biometric:1.1.0")
+    implementation(libs.androidx.biometric)
 
     // Security
-    implementation("androidx.security:security-crypto:1.0.0")
+    implementation(libs.androidx.security.crypto)
 
     // Splash
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
 
     // Leak Canary
-    implementation("com.squareup.leakcanary:leakcanary-android:2.10")
+    implementation(libs.leakcanary.android)
 
     // -----Testing-----
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.04.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.2")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.4.2")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.2")
-
-    androidTestImplementation("com.google.truth:truth:1.1.3")
-
-    androidTestImplementation("androidx.room:room-testing:2.5.1")
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.45")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.45")
+//    testImplementation("junit:junit:4.13.2")
+//    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+//    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+//
+//    androidTestImplementation(platform("androidx.compose:compose-bom:2023.04.00"))
+//    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.2")
+//    debugImplementation("androidx.compose.ui:ui-tooling:1.4.2")
+//    debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.2")
+//
+//    androidTestImplementation("com.google.truth:truth:1.1.3")
+//
+//    androidTestImplementation("androidx.room:room-testing:2.5.1")
+//    androidTestImplementation("com.google.dagger:hilt-android-testing:2.45")
+//    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.45")
 }
